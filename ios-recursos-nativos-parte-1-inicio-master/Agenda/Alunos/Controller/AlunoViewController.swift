@@ -91,7 +91,7 @@ class AlunoViewController: UIViewController, ImagemPickerFotoSelecionada {
     
     @IBAction func buttonCompartilhar(_ sender: UIButton) {
         guard let nome = textFieldNome.text else { return }
-        guard let nota = textFieldNota.text ele { return }
+        guard let nota = textFieldNota.text else { return }
         guard let imagemDoAluno = imageAluno.image else { return }
         
         let activityViewController = UIActivityViewController(activityItems: [imagemDoAluno, nome, nota], applicationActivities: nil)
