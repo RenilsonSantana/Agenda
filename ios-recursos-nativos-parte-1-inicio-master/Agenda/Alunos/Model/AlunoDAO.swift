@@ -62,6 +62,7 @@ class AlunoDAO: NSObject {
         aluno?.setValue(dicionarioDeAluno["telefone"] as? String, forKey: "telefone")
         aluno?.setValue(dicionarioDeAluno["site"] as? String, forKey: "site")
         aluno?.setValue(("\(String(describing: dicionarioDeAluno["nota"]))" as NSString).doubleValue, forKey: "nota")
+        aluno?.setValue(dicionarioDeAluno["sincronizado"] as? Bool, forKey: "sincronizado")
         
         atualizaContexto()
     }

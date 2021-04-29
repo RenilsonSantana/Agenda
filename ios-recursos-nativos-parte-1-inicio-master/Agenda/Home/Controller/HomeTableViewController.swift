@@ -18,6 +18,13 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
 
     var alunos:Array<Aluno> = []
     
+    lazy var pullToRefresh: UIRefreshControl = {
+       let pullToRefresh = UIRefreshControl()
+        pullToRefresh.addTarget(self, action: #selector(recarregaAlunos(_:)), for: UIControlEvents.valueChanged)
+        
+        return pullToRefresh
+    }()
+    
     // MARK: - IBActions
     
     @IBAction func buttonMedia(_ sender: Any) {
@@ -42,21 +49,41 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - View Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
-        self.recuperaAlunos()
+        self.recuperaTodosAlunos()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuraSearch()
+        tableView.addSubview(pullToRefresh)
     }
     
     // MARK: - Métodos
     
-    func recuperaAlunos() {
+    func recuperaTodosAlunos() {
         Repositorio().recuperaAlunos{ (listaDeAlunos) in
             self.alunos = listaDeAlunos
             self.tableView.reloadData()
         }
+    }
+    
+    func recuperaUltimosAlunos(_ versao:String){
+        Repositorio().recuperaUltimosAlunos(versao, completion: {
+            self.alunos = AlunoDAO().recuperaAlunos()
+            self.tableView.reloadData()
+        })
+    }
+    
+    @objc func recarregaAlunos(_ refreshControl: UIRefreshControl){
+        let ultimaVersao = AlunoUserDefaults().recuperaUltimaVersao()
+        if ultimaVersao == nil{
+            recuperaTodosAlunos()
+        }
+        else{
+            guard let versao = ultimaVersao else {return}
+            recuperaUltimosAlunos(versao)
+        }
+        refreshControl.endRefreshing()
     }
     
     func configuraSearch() {
