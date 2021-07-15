@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MAa-UF-TLD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MAa-UF-TLD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +19,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula-aluno" rowHeight="85" id="4uR-YV-UME" customClass="HomeTableViewCell" customModule="Agenda" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4uR-YV-UME" id="Cvy-MG-lis">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
@@ -89,14 +89,11 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ys-tw-Qw2">
                                         <rect key="frame" x="109" y="20" width="125" height="125"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-Ef-j6E">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padrao" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-Ef-j6E">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6G-KS-zIE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6G-KS-zIE">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="foto"/>
                                                 <connections>
                                                     <action selector="buttonFoto:" destination="ZY7-NM-Hup" eventType="touchUpInside" id="Vjt-Lo-4b6"/>
                                                 </connections>
@@ -104,7 +101,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="X6G-KS-zIE" firstAttribute="leading" secondItem="5ys-tw-Qw2" secondAttribute="leading" id="05l-yq-CEi"/>
+                                            <constraint firstAttribute="bottom" secondItem="X6G-KS-zIE" secondAttribute="bottom" id="4dw-4A-fu6"/>
+                                            <constraint firstAttribute="bottom" secondItem="EeF-Ef-j6E" secondAttribute="bottom" id="4lU-tw-Tcp"/>
                                             <constraint firstAttribute="height" constant="125" id="ECi-FW-5kx"/>
+                                            <constraint firstAttribute="trailing" secondItem="X6G-KS-zIE" secondAttribute="trailing" id="Ejt-75-4OY"/>
+                                            <constraint firstItem="EeF-Ef-j6E" firstAttribute="leading" secondItem="5ys-tw-Qw2" secondAttribute="leading" id="Eju-5U-Oog"/>
+                                            <constraint firstAttribute="trailing" secondItem="EeF-Ef-j6E" secondAttribute="trailing" id="IYz-kp-KiA"/>
+                                            <constraint firstItem="EeF-Ef-j6E" firstAttribute="top" secondItem="5ys-tw-Qw2" secondAttribute="top" id="JbA-gm-woS"/>
+                                            <constraint firstItem="X6G-KS-zIE" firstAttribute="top" secondItem="5ys-tw-Qw2" secondAttribute="top" id="Xs9-CJ-SjN"/>
                                             <constraint firstAttribute="width" constant="125" id="gYd-QQ-KAN"/>
                                         </constraints>
                                     </view>
@@ -323,6 +328,7 @@
         <segue reference="DH3-0I-uEn"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="padrao" width="500" height="446"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
